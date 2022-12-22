@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
-import { Typography } from '@strapi/design-system/Typography';
-import { Link } from '@strapi/design-system/v2/Link';
-import { Stack } from '@strapi/design-system/Stack';
-import { Box } from '@strapi/design-system/Box';
-import { Button } from '@strapi/design-system/Button';
-import ArrowRight from '@strapi/icons/ArrowRight';
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { useIntl } from "react-intl";
+import { Typography } from "@strapi/design-system/Typography";
+import { Link } from "@strapi/design-system/v2/Link";
+import { Stack } from "@strapi/design-system/Stack";
+import { Box } from "@strapi/design-system/Box";
+import { Button } from "@strapi/design-system/Button";
+import ArrowRight from "@strapi/icons/ArrowRight";
 
 const WordWrap = styled(Typography)`
   word-break: break-word;
@@ -27,42 +27,45 @@ const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
           <Typography as="h1" variant="alpha">
             {hasCreatedContentType
               ? formatMessage({
-                  id: 'app.components.HomePage.welcome.again',
-                  defaultMessage: 'Welcome 👋',
+                  id: "app.components.HomePage.welcome.again",
+                  defaultMessage: "Bienvenue, Florian! 👋",
                 })
               : formatMessage({
-                  id: 'app.components.HomePage.welcome',
-                  defaultMessage: 'Welcome on board!',
+                  id: "app.components.HomePage.welcome",
+                  defaultMessage: "Bienvenue à bord, Florian ! 👋 ",
                 })}
           </Typography>
           <WordWrap textColor="neutral600" variant="epsilon">
             {hasCreatedContentType
               ? formatMessage({
-                  id: 'app.components.HomePage.welcomeBlock.content.again',
+                  id: "app.components.HomePage.welcomeBlock.content.again",
                   defaultMessage:
-                    'We hope you are making progress on your project! Feel free to read the latest news about Strapi. We are giving our best to improve the product based on your feedback.',
+                    "Comment avancez-vous dans la rédaction de votre contenu ? Pour toute question au sujet du panneau administrateur, veuillez me contacter.",
                 })
               : formatMessage({
-                  id: 'app.components.HomePage.welcomeBlock.content',
+                  id: "app.components.HomePage.welcomeBlock.content",
                   defaultMessage:
-                    'Congrats! You are logged as the first administrator. To discover the powerful features provided by Strapi, we recommend you to create your first Content type!',
+                    "Félicitations ! Vous venez de vous connecter pour la toute première fois.",
                 })}
+            <Typography as="h1" variant="alpha">
+              Essai remplacement hyperlink
+            </Typography>
           </WordWrap>
-          {hasCreatedContentType ? (
+          {/*           {hasCreatedContentType ? (
             <Link isExternal href="https://strapi.io/blog">
               {formatMessage({
-                id: 'app.components.HomePage.button.blog',
-                defaultMessage: 'See more on the blog',
+                id: "app.components.HomePage.button.blog",
+                defaultMessage: "See more on the blog",
               })}
             </Link>
           ) : (
             <Button size="L" onClick={onCreateCT} endIcon={<ArrowRight />}>
               {formatMessage({
-                id: 'app.components.HomePage.create',
-                defaultMessage: 'Create your first Content type',
+                id: "app.components.HomePage.create",
+                defaultMessage: "Create your first Content type",
               })}
             </Button>
-          )}
+          )} */}
         </StackCustom>
       </Box>
     </div>
