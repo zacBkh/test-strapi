@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
-import { NavLink as RouterNavLink, useLocation } from 'react-router-dom';
-import { Divider } from '@strapi/design-system/Divider';
+import React, { useRef, useState } from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { useIntl } from "react-intl";
+import { NavLink as RouterNavLink, useLocation } from "react-router-dom";
+import { Divider } from "@strapi/design-system/Divider";
 import {
   MainNav,
   NavBrand,
@@ -12,15 +12,20 @@ import {
   NavSection,
   NavUser,
   NavCondense,
-} from '@strapi/design-system/v2/MainNav';
-import { FocusTrap } from '@strapi/design-system/FocusTrap';
-import { Box } from '@strapi/design-system/Box';
-import { Typography } from '@strapi/design-system/Typography';
-import { Stack } from '@strapi/design-system/Stack';
-import Write from '@strapi/icons/Write';
-import Exit from '@strapi/icons/Exit';
-import { auth, usePersistentState, useAppInfos, useTracking } from '@strapi/helper-plugin';
-import useConfigurations from '../../hooks/useConfigurations';
+} from "@strapi/design-system/v2/MainNav";
+import { FocusTrap } from "@strapi/design-system/FocusTrap";
+import { Box } from "@strapi/design-system/Box";
+import { Typography } from "@strapi/design-system/Typography";
+import { Stack } from "@strapi/design-system/Stack";
+import Write from "@strapi/icons/Write";
+import Exit from "@strapi/icons/Exit";
+import {
+  auth,
+  usePersistentState,
+  useAppInfos,
+  useTracking,
+} from "@strapi/helper-plugin";
+import useConfigurations from "../../hooks/useConfigurations";
 
 const LinkUserWrapper = styled(Box)`
   width: ${150 / 16}rem;
@@ -51,27 +56,32 @@ const LinkUser = styled(RouterNavLink)`
 `;
 
 const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }) => {
-// Removing content type builder by Zach
-console.log('generalSectionLinks',generalSectionLinks)
-console.log('pluginsSectionLinks',pluginsSectionLinks)
-const [contentTypeBuilder, mediaGallery] = pluginsSectionLinks
-pluginsSectionLinks = [mediaGallery]
+  // Removing content type builder by Zach
+  const [contentTypeBuilder, mediaGallery] = pluginsSectionLinks;
+  pluginsSectionLinks = [mediaGallery];
+
+  // Removing plugins & market place by Zach
+  const [plugins, marketPlace, parametres] = generalSectionLinks;
+  generalSectionLinks = [parametres];
 
   const buttonRef = useRef();
   const [userLinksVisible, setUserLinksVisible] = useState(false);
   const {
     logos: { menu },
   } = useConfigurations();
-  const [condensed, setCondensed] = usePersistentState('navbar-condensed', false);
+  const [condensed, setCondensed] = usePersistentState(
+    "navbar-condensed",
+    false
+  );
   const { userDisplayName } = useAppInfos();
   const { formatMessage } = useIntl();
   const { trackUsage } = useTracking();
   const { pathname } = useLocation();
 
   const initials = userDisplayName
-    .split(' ')
+    .split(" ")
     .map((name) => name.substring(0, 1))
-    .join('')
+    .join("")
     .substring(0, 2);
 
   const handleToggleUserLinks = () => setUserLinksVisible((prev) => !prev);
@@ -84,36 +94,33 @@ pluginsSectionLinks = [mediaGallery]
   const handleBlur = (e) => {
     if (
       !e.currentTarget.contains(e.relatedTarget) &&
-      e.relatedTarget?.parentElement?.id !== 'main-nav-user-button'
+      e.relatedTarget?.parentElement?.id !== "main-nav-user-button"
     ) {
       setUserLinksVisible(false);
     }
   };
 
   const handleClickOnLink = (destination = null) => {
-    trackUsage('willNavigate', { from: pathname, to: destination });
+    trackUsage("willNavigate", { from: pathname, to: destination });
   };
 
   const menuTitle = formatMessage({
-    id: 'app.components.LeftMenu.navbrand.title',
-    defaultMessage: 'Strapi Dashboard',
+    id: "app.components.LeftMenu.navbrand.title",
+    defaultMessage: "Strapi Dashboard",
   });
 
   return (
     <MainNav condensed={condensed}>
       <NavBrand
         as={RouterNavLink}
-        workplace={formatMessage({
-          id: 'app.components.LeftMenu.navbrand.workplace',
-          defaultMessage: 'Workplace',
-        })}
-        title={menuTitle}
+        workplace={"Florian"}
+        title={"La Rétropolitaine."}
         icon={
           <img
             src={menu.custom || menu.default}
             alt={formatMessage({
-              id: 'app.components.LeftMenu.logo.alt',
-              defaultMessage: 'Application logo',
+              id: "app.components.LeftMenu.logo.alt",
+              defaultMessage: "Application logo",
             })}
           />
         }
@@ -126,16 +133,19 @@ pluginsSectionLinks = [mediaGallery]
           as={RouterNavLink}
           to="/content-manager"
           icon={<Write />}
-          onClick={() => handleClickOnLink('/content-manager')}
+          onClick={() => handleClickOnLink("/content-manager")}
         >
-          {formatMessage({ id: 'global.content-manager', defaultMessage: 'Content manager' })}
+          {formatMessage({
+            id: "global.content-manager",
+            defaultMessage: "Content manager",
+          })}
         </NavLink>
 
         {pluginsSectionLinks.length > 0 ? (
           <NavSection
             label={formatMessage({
-              id: 'app.components.LeftMenu.plugins',
-              defaultMessage: 'Plugins',
+              id: "app.components.LeftMenu.plugins",
+              defaultMessage: "Plugins",
             })}
           >
             {pluginsSectionLinks.map((link) => {
@@ -159,8 +169,8 @@ pluginsSectionLinks = [mediaGallery]
         {generalSectionLinks.length > 0 ? (
           <NavSection
             label={formatMessage({
-              id: 'app.components.LeftMenu.general',
-              defaultMessage: 'General',
+              id: "app.components.LeftMenu.general",
+              defaultMessage: "General",
             })}
           >
             {generalSectionLinks.map((link) => {
@@ -170,7 +180,9 @@ pluginsSectionLinks = [mediaGallery]
                 <NavLink
                   as={RouterNavLink}
                   badgeContent={
-                    (link.notificationsCount > 0 && link.notificationsCount.toString()) || undefined
+                    (link.notificationsCount > 0 &&
+                      link.notificationsCount.toString()) ||
+                    undefined
                   }
                   to={link.to}
                   key={link.to}
@@ -206,16 +218,21 @@ pluginsSectionLinks = [mediaGallery]
               <LinkUser tabIndex={0} onClick={handleToggleUserLinks} to="/me">
                 <Typography>
                   {formatMessage({
-                    id: 'global.profile',
-                    defaultMessage: 'Profile',
+                    id: "global.profile",
+                    defaultMessage: "Profile",
                   })}
                 </Typography>
               </LinkUser>
-              <LinkUser tabIndex={0} onClick={handleLogout} logout="logout" to="/auth/login">
+              <LinkUser
+                tabIndex={0}
+                onClick={handleLogout}
+                logout="logout"
+                to="/auth/login"
+              >
                 <Typography textColor="danger600">
                   {formatMessage({
-                    id: 'app.components.LeftMenu.logout',
-                    defaultMessage: 'Logout',
+                    id: "app.components.LeftMenu.logout",
+                    defaultMessage: "Logout",
                   })}
                 </Typography>
                 <Exit />
@@ -228,12 +245,12 @@ pluginsSectionLinks = [mediaGallery]
       <NavCondense onClick={() => setCondensed((s) => !s)}>
         {condensed
           ? formatMessage({
-              id: 'app.components.LeftMenu.expand',
-              defaultMessage: 'Expand the navbar',
+              id: "app.components.LeftMenu.expand",
+              defaultMessage: "Expand the navbar",
             })
           : formatMessage({
-              id: 'app.components.LeftMenu.collapse',
-              defaultMessage: 'Collapse the navbar',
+              id: "app.components.LeftMenu.collapse",
+              defaultMessage: "Collapse the navbar",
             })}
       </NavCondense>
     </MainNav>

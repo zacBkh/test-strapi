@@ -4,28 +4,30 @@
  *
  */
 
-import React, { useMemo, useState } from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
-import { useIntl } from 'react-intl';
-import matchSorter from 'match-sorter';
-import sortBy from 'lodash/sortBy';
-import toLower from 'lodash/toLower';
-import { NavLink } from 'react-router-dom';
+import React, { useMemo, useState } from "react";
+import { useSelector, shallowEqual } from "react-redux";
+import { useIntl } from "react-intl";
+import matchSorter from "match-sorter";
+import sortBy from "lodash/sortBy";
+import toLower from "lodash/toLower";
+import { NavLink } from "react-router-dom";
 import {
   SubNav,
   SubNavHeader,
   SubNavSection,
   SubNavSections,
   SubNavLink,
-} from '@strapi/design-system/v2/SubNav';
-import getTrad from '../../../utils/getTrad';
-import { makeSelectModelLinks } from '../selectors';
+} from "@strapi/design-system/v2/SubNav";
+import getTrad from "../../../utils/getTrad";
+import { makeSelectModelLinks } from "../selectors";
 
 const matchByTitle = (links, search) =>
-  matchSorter(links, toLower(search), { keys: [(item) => toLower(item.title)] });
+  matchSorter(links, toLower(search), {
+    keys: [(item) => toLower(item.title)],
+  });
 
 const LeftMenu = () => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const { formatMessage } = useIntl();
   const modelLinksSelector = useMemo(makeSelectModelLinks, []);
   const { collectionTypeLinks, singleTypeLinks } = useSelector(
@@ -46,10 +48,11 @@ const LeftMenu = () => {
 
   const menu = [
     {
-      id: 'collectionTypes',
+      id: "collectionTypes",
       title: {
-        id: getTrad('components.LeftMenu.collection-types'),
-        defaultMessage: 'Collection Types',
+        id: "collectionTypesID",
+        // id: getTrad('components.LeftMenu.collection-types'),
+        defaultMessage: "Collection Types",
       },
       searchable: true,
       links: sortBy(matchByTitle(intlCollectionTypeLinks, search), (object) =>
@@ -57,10 +60,11 @@ const LeftMenu = () => {
       ),
     },
     {
-      id: 'singleTypes',
+      id: "singleTypes",
       title: {
-        id: getTrad('components.LeftMenu.single-types'),
-        defaultMessage: 'Single Types',
+        id: "singleTypesID",
+        // id: getTrad('components.LeftMenu.single-types'),
+        defaultMessage: "Restaurants",
       },
       searchable: true,
       links: sortBy(matchByTitle(intlSingleTypeLinks, search), (object) =>
@@ -70,7 +74,7 @@ const LeftMenu = () => {
   ];
 
   const handleClear = () => {
-    setSearch('');
+    setSearch("");
   };
 
   const handleChangeSearch = ({ target: { value } }) => {
@@ -78,8 +82,8 @@ const LeftMenu = () => {
   };
 
   const label = formatMessage({
-    id: getTrad('header.name'),
-    defaultMessage: 'Content',
+    id: getTrad("header.name"),
+    defaultMessage: "Content",
   });
 
   return (
@@ -91,16 +95,21 @@ const LeftMenu = () => {
         onChange={handleChangeSearch}
         onClear={handleClear}
         searchLabel={formatMessage({
-          id: 'content-manager.components.LeftMenu.Search.label',
-          defaultMessage: 'Search for a content type',
+          id: "content-manager.components.LeftMenu.Search.label",
+          defaultMessage: "Search for a content type",
         })}
       />
       <SubNavSections>
         {menu.map((section) => {
           const label = formatMessage(
-            { id: section.title.id, defaultMessage: section.title.defaultMessage },
+            {
+              id: section.title.id,
+              defaultMessage: section.title.defaultMessage,
+            },
             section.title.values
           );
+
+          console.log("section.links", section.links);
 
           return (
             <SubNavSection
@@ -109,10 +118,14 @@ const LeftMenu = () => {
               badgeLabel={section.links.length.toString()}
             >
               {section.links.map((link) => {
-                const search = link.search ? `?${link.search}` : '';
+                const search = link.search ? `?${link.search}` : "";
 
                 return (
-                  <SubNavLink as={NavLink} key={link.uid} to={`${link.to}${search}`}>
+                  <SubNavLink
+                    as={NavLink}
+                    key={link.uid}
+                    to={`${link.to}${search}`}
+                  >
                     {link.title}
                   </SubNavLink>
                 );
