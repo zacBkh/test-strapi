@@ -25,17 +25,14 @@ const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
       <Box paddingLeft={6} paddingBottom={10}>
         <StackCustom spacing={5}>
           <Typography as="h1" variant="alpha">
-            {hasCreatedContentType
-              ? formatMessage({
-                  id: "app.components.HomePage.welcome.again",
-                  defaultMessage: "Bienvenue, Florian! 👋",
-                })
-              : formatMessage({
-                  id: "app.components.HomePage.welcome",
-                  defaultMessage: "Bienvenue à bord, Florian ! 👋 ",
-                })}
+            Bienvenue, Florian! 👋
           </Typography>
-          <WordWrap textColor="neutral600" variant="epsilon">
+          <Typography as="h1" variant="omega">
+            Comment avancez-vous dans la rédaction de votre contenu ? Pour toute
+            question au sujet du panneau administrateur, veuillez me
+            contacter.📞
+          </Typography>
+          {/*           <WordWrap textColor="neutral600" variant="epsilon">
             {hasCreatedContentType
               ? formatMessage({
                   id: "app.components.HomePage.welcomeBlock.content.again",
@@ -51,6 +48,7 @@ const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
               Essai remplacement hyperlink
             </Typography>
           </WordWrap>
+ */}{" "}
           {/*           {hasCreatedContentType ? (
             <Link isExternal href="https://strapi.io/blog">
               {formatMessage({
