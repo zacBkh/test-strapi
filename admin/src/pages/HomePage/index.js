@@ -76,14 +76,14 @@ const HomePage = () => {
           <img alt="" aria-hidden src={cornerOrnamentPath} />
         </LogoContainer>
         <Box padding={10}>
-          <Grid>
+          {/*  <Grid>
             <GridItem col={8} s={12}>
               <HomeHeader
                 onCreateCT={handleClick}
                 hasCreatedContentType={hasAlreadyCreatedContentTypes}
               />
             </GridItem>
-          </Grid>
+          </Grid> */}
           <Grid gap={6}>
             <GridItem col={2}></GridItem>
             <GridItem col={8} s={12}>
