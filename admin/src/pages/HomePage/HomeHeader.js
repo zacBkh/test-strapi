@@ -36,7 +36,11 @@ const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
           {/* modif_zach_linkToTuto */}
           <Typography as="h3" variant="epsilon">
             N'hésitez pas à
-            <a href="https://www.google.com/" target="_blank">
+            <a
+              style={{ color: "#4945ff", fontWeight: 600 }}
+              href="https://www.google.com/"
+              target="_blank"
+            >
               consulter le tutoriel vidéo
             </a>
             démontrant comment ajouter du contenu à La Rétropolitaine.

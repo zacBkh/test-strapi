@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Stack } from '@strapi/design-system/Stack';
-import { Box } from '@strapi/design-system/Box';
-import { Typography } from '@strapi/design-system/Typography';
-import { useIntl } from 'react-intl';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Stack } from "@strapi/design-system/Stack";
+import { Box } from "@strapi/design-system/Box";
+import { Typography } from "@strapi/design-system/Typography";
+import { useIntl } from "react-intl";
 
 const LiStyled = styled.li`
   list-style: disc;
@@ -27,9 +27,13 @@ const Content = ({ id, defaultMessage }) => {
               {children}
             </a>
           ),
-          b: (children) => <Typography fontWeight="semiBold">{children}</Typography>,
+          b: (children) => (
+            <Typography fontWeight="semiBold">{children}</Typography>
+          ),
           p: (children) => <Typography>{children}</Typography>,
-          light: (children) => <Typography textColor="neutral600">{children}</Typography>,
+          light: (children) => (
+            <Typography textColor="neutral600">{children}</Typography>
+          ),
           ul: (children) => (
             <Box paddingLeft={6}>
               <ul>{children}</ul>
