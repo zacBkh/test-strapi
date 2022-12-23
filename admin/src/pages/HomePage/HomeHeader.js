@@ -28,10 +28,18 @@ const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
           <Typography as="h1" variant="alpha">
             Bienvenue, Florian! 👋
           </Typography>
-          <Typography as="h1" variant="epsilon">
+          <Typography as="h2" variant="epsilon">
             Comment avancez-vous dans la rédaction de votre contenu ? 💬 <br />
             Pour toute question au sujet du panneau administrateur, veuillez me
             contacter.📞
+          </Typography>
+          {/* modif_zach_linkToTuto */}
+          <Typography as="h3" variant="epsilon">
+            N'hésitez pas à
+            <a href="https://www.google.com/" target="_blank">
+              consulter le tutoriel vidéo
+            </a>
+            démontrant comment ajouter du contenu à La Rétropolitaine.
           </Typography>
           {/*           <WordWrap textColor="neutral600" variant="epsilon">
             {hasCreatedContentType
