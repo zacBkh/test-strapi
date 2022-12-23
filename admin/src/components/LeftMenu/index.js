@@ -56,9 +56,9 @@ const LinkUser = styled(RouterNavLink)`
 `;
 
 const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }) => {
-  // Removing content type builder by Zach
-  const [contentTypeBuilder, mediaGallery] = pluginsSectionLinks;
-  pluginsSectionLinks = [mediaGallery];
+  // modif_zach_removeCTB
+  // const [contentTypeBuilder, mediaGallery] = pluginsSectionLinks;
+  // pluginsSectionLinks = [mediaGallery];
 
   // Removing plugins & market place by Zach
   const [plugins, marketPlace, parametres] = generalSectionLinks;
@@ -113,7 +113,7 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }) => {
     <MainNav condensed={condensed}>
       <NavBrand
         as={RouterNavLink}
-        workplace={"Florian"}
+        workplace={"Administrateur"}
         title={"La Rétropolitaine."}
         icon={
           <img

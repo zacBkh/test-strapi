@@ -72,9 +72,10 @@ const HomePage = () => {
         {(title) => <Helmet title={title[0]} />}
       </FormattedMessage>
       <Main>
-        <LogoContainer>
+        {/* modif_zach_removedOverlayLogoTopRight */}
+        {/* <LogoContainer>
           <img alt="" aria-hidden src={cornerOrnamentPath} />
-        </LogoContainer>
+        </LogoContainer> */}
         <Box padding={10}>
           <Grid>
             <GridItem col={8} s={12}>
@@ -82,6 +83,14 @@ const HomePage = () => {
                 onCreateCT={handleClick}
                 hasCreatedContentType={hasAlreadyCreatedContentTypes}
               />
+            </GridItem>
+          </Grid>
+
+          {/* modif_zach_putGuidedTourAlways*/}
+          <Grid gap={6}>
+            <GridItem col={2}></GridItem>
+            <GridItem col={8} s={12}>
+              <GuidedTourHomepage />
             </GridItem>
           </Grid>
 

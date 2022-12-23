@@ -4,42 +4,52 @@
  *
  */
 
-import React, { Suspense, useEffect, useMemo, lazy } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { useTracking, LoadingIndicatorPage, useStrapiApp } from '@strapi/helper-plugin';
-import { useDispatch, useSelector } from 'react-redux';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import GuidedTourModal from '../../components/GuidedTour/Modal';
-import LeftMenu from '../../components/LeftMenu';
-import AppLayout from '../../layouts/AppLayout';
-import { useMenu } from '../../hooks';
-import { createRoute } from '../../utils';
-import { SET_APP_RUNTIME_STATUS } from '../App/constants';
-import Onboarding from './Onboarding';
+import React, { Suspense, useEffect, useMemo, lazy } from "react";
+import { Switch, Route } from "react-router-dom";
+import {
+  useTracking,
+  LoadingIndicatorPage,
+  useStrapiApp,
+} from "@strapi/helper-plugin";
+import { useDispatch, useSelector } from "react-redux";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import GuidedTourModal from "../../components/GuidedTour/Modal";
+import LeftMenu from "../../components/LeftMenu";
+import AppLayout from "../../layouts/AppLayout";
+import { useMenu } from "../../hooks";
+import { createRoute } from "../../utils";
+import { SET_APP_RUNTIME_STATUS } from "../App/constants";
+import Onboarding from "./Onboarding";
 
 const CM = lazy(() =>
-  import(/* webpackChunkName: "content-manager" */ '../../content-manager/pages/App')
+  import(
+    /* webpackChunkName: "content-manager" */ "../../content-manager/pages/App"
+  )
 );
-const HomePage = lazy(() => import(/* webpackChunkName: "Admin_homePage" */ '../HomePage'));
+const HomePage = lazy(() =>
+  import(/* webpackChunkName: "Admin_homePage" */ "../HomePage")
+);
 const InstalledPluginsPage = lazy(() =>
-  import(/* webpackChunkName: "Admin_pluginsPage" */ '../InstalledPluginsPage')
+  import(/* webpackChunkName: "Admin_pluginsPage" */ "../InstalledPluginsPage")
 );
 const MarketplacePage = lazy(() =>
-  import(/* webpackChunkName: "Admin_marketplace" */ '../MarketplacePage')
+  import(/* webpackChunkName: "Admin_marketplace" */ "../MarketplacePage")
 );
 const NotFoundPage = lazy(() =>
-  import(/* webpackChunkName: "Admin_NotFoundPage" */ '../NotFoundPage')
+  import(/* webpackChunkName: "Admin_NotFoundPage" */ "../NotFoundPage")
 );
 const InternalErrorPage = lazy(() =>
-  import(/* webpackChunkName: "Admin_InternalErrorPage" */ '../InternalErrorPage')
+  import(
+    /* webpackChunkName: "Admin_InternalErrorPage" */ "../InternalErrorPage"
+  )
 );
 
 const ProfilePage = lazy(() =>
-  import(/* webpackChunkName: "Admin_profilePage" */ '../ProfilePage')
+  import(/* webpackChunkName: "Admin_profilePage" */ "../ProfilePage")
 );
 const SettingsPage = lazy(() =>
-  import(/* webpackChunkName: "Admin_settingsPage" */ '../SettingsPage')
+  import(/* webpackChunkName: "Admin_settingsPage" */ "../SettingsPage")
 );
 
 // Simple hook easier for testing
@@ -52,8 +62,8 @@ const useTrackUsage = () => {
     // Make sure the event is only send once after accessing the admin panel
     // and not at runtime for example when regenerating the permissions with the ctb
     // or with i18n
-    if (appStatus === 'init') {
-      trackUsage('didAccessAuthenticatedAdministration');
+    if (appStatus === "init") {
+      trackUsage("didAccessAuthenticatedAdministration");
 
       dispatch({ type: SET_APP_RUNTIME_STATUS });
     }
@@ -106,7 +116,8 @@ const Admin = () => {
           </Switch>
         </Suspense>
         <GuidedTourModal />
-        <Onboarding />
+        {/* modif_zach__removedQuestionMakOnboarding */}
+        {/* <Onboarding /> */}
       </AppLayout>
     </DndProvider>
   );

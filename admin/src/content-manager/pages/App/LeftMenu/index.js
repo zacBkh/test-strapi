@@ -51,7 +51,7 @@ const LeftMenu = () => {
       id: "collectionTypes",
       title: {
         id: "collectionTypesID",
-        // id: getTrad('components.LeftMenu.collection-types'),
+        id: getTrad("components.LeftMenu.collection-types"),
         defaultMessage: "Collection Types",
       },
       searchable: true,
@@ -63,7 +63,7 @@ const LeftMenu = () => {
       id: "singleTypes",
       title: {
         id: "singleTypesID",
-        // id: getTrad('components.LeftMenu.single-types'),
+        id: getTrad("components.LeftMenu.single-types"),
         defaultMessage: "Restaurants",
       },
       searchable: true,

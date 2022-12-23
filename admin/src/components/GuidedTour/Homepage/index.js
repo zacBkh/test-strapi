@@ -55,10 +55,6 @@ const GuidedTourHomepage = () => {
       paddingBottom={4}
       background="neutral0"
     >
-      <Typography variant="beta" as="h2">
-        Essai Zach !
-      </Typography>
-
       <Stack spacing={6}>
         <Typography variant="beta" as="h2">
           {formatMessage({
@@ -68,10 +64,12 @@ const GuidedTourHomepage = () => {
         </Typography>
         <StepperHomepage
           sections={sections}
-          currentSectionKey={activeSection}
+          // modif_zach_removedTestTheAPIButton
+          // currentSectionKey={activeSection}
         />
       </Stack>
-      <Flex justifyContent="flex-end">
+      {/* modif_zach_removedSkipTheTourButton */}
+      {/*       <Flex justifyContent="flex-end">
         <Button variant="tertiary" onClick={handleSkip}>
           {formatMessage({
             id: "app.components.GuidedTour.skip",
@@ -79,6 +77,7 @@ const GuidedTourHomepage = () => {
           })}
         </Button>
       </Flex>
+ */}{" "}
     </Box>
   );
 };

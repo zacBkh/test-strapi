@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
-import { Form, Link } from '@strapi/helper-plugin';
-import EyeStriked from '@strapi/icons/EyeStriked';
-import Eye from '@strapi/icons/Eye';
-import { Box } from '@strapi/design-system/Box';
-import { Stack } from '@strapi/design-system/Stack';
-import { Main } from '@strapi/design-system/Main';
-import { Flex } from '@strapi/design-system/Flex';
-import { Button } from '@strapi/design-system/Button';
-import { TextInput } from '@strapi/design-system/TextInput';
-import { Checkbox } from '@strapi/design-system/Checkbox';
-import { Typography } from '@strapi/design-system/Typography';
-import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
-import styled from 'styled-components';
-import { Formik } from 'formik';
-import { Column, LayoutContent } from '../../../../layouts/UnauthenticatedLayout';
-import Logo from '../../../../components/UnauthenticatedLogo';
-import FieldActionWrapper from '../FieldActionWrapper';
+import React, { useState } from "react";
+import { Form, Link } from "@strapi/helper-plugin";
+import EyeStriked from "@strapi/icons/EyeStriked";
+import Eye from "@strapi/icons/Eye";
+import { Box } from "@strapi/design-system/Box";
+import { Stack } from "@strapi/design-system/Stack";
+import { Main } from "@strapi/design-system/Main";
+import { Flex } from "@strapi/design-system/Flex";
+import { Button } from "@strapi/design-system/Button";
+import { TextInput } from "@strapi/design-system/TextInput";
+import { Checkbox } from "@strapi/design-system/Checkbox";
+import { Typography } from "@strapi/design-system/Typography";
+import PropTypes from "prop-types";
+import { useIntl } from "react-intl";
+import styled from "styled-components";
+import { Formik } from "formik";
+import {
+  Column,
+  LayoutContent,
+} from "../../../../layouts/UnauthenticatedLayout";
+import Logo from "../../../../components/UnauthenticatedLogo";
+import FieldActionWrapper from "../FieldActionWrapper";
 
 const PasswordInput = styled(TextInput)`
   ::-ms-reveal {
@@ -34,8 +37,8 @@ const Login = ({ onSubmit, schema, children }) => {
         <Formik
           enableReinitialize
           initialValues={{
-            email: '',
-            password: '',
+            email: "",
+            password: "",
             rememberMe: false,
           }}
           onSubmit={onSubmit}
@@ -49,16 +52,16 @@ const Login = ({ onSubmit, schema, children }) => {
                 <Box paddingTop={6} paddingBottom={1}>
                   <Typography variant="alpha" as="h1">
                     {formatMessage({
-                      id: 'Auth.form.welcome.title',
-                      defaultMessage: 'Welcome!',
+                      id: "Auth.form.welcome.title",
+                      defaultMessage: "Welcome!",
                     })}
                   </Typography>
                 </Box>
                 <Box paddingBottom={7}>
                   <Typography variant="epsilon" textColor="neutral600">
                     {formatMessage({
-                      id: 'Auth.form.welcome.subtitle',
-                      defaultMessage: 'Log in to your Strapi account',
+                      id: "Auth.form.welcome.subtitle",
+                      defaultMessage: "Log in to your Strapi account",
                     })}
                   </Typography>
                 </Box>
@@ -80,16 +83,19 @@ const Login = ({ onSubmit, schema, children }) => {
                     errors.email
                       ? formatMessage({
                           id: errors.email,
-                          defaultMessage: 'This value is required.',
+                          defaultMessage: "This value is required.",
                         })
-                      : ''
+                      : ""
                   }
                   value={values.email}
                   onChange={handleChange}
-                  label={formatMessage({ id: 'Auth.form.email.label', defaultMessage: 'Email' })}
+                  label={formatMessage({
+                    id: "Auth.form.email.label",
+                    defaultMessage: "Email",
+                  })}
                   placeholder={formatMessage({
-                    id: 'Auth.form.email.placeholder',
-                    defaultMessage: 'kai@doe.com',
+                    id: "Auth.form.email.placeholder",
+                    defaultMessage: "kai@doe.com",
                   })}
                   name="email"
                   required
@@ -99,18 +105,18 @@ const Login = ({ onSubmit, schema, children }) => {
                     errors.password
                       ? formatMessage({
                           id: errors.password,
-                          defaultMessage: 'This value is required.',
+                          defaultMessage: "This value is required.",
                         })
-                      : ''
+                      : ""
                   }
                   onChange={handleChange}
                   value={values.password}
                   label={formatMessage({
-                    id: 'global.password',
-                    defaultMessage: 'Password',
+                    id: "global.password",
+                    defaultMessage: "Password",
                   })}
                   name="password"
-                  type={passwordShown ? 'text' : 'password'}
+                  type={passwordShown ? "text" : "password"}
                   endAction={
                     <FieldActionWrapper
                       onClick={(e) => {
@@ -120,12 +126,12 @@ const Login = ({ onSubmit, schema, children }) => {
                       label={formatMessage(
                         passwordShown
                           ? {
-                              id: 'Auth.form.password.show-password',
-                              defaultMessage: 'Show password',
+                              id: "Auth.form.password.show-password",
+                              defaultMessage: "Show password",
                             }
                           : {
-                              id: 'Auth.form.password.hide-password',
-                              defaultMessage: 'Hide password',
+                              id: "Auth.form.password.hide-password",
+                              defaultMessage: "Hide password",
                             }
                       )}
                     >
@@ -136,19 +142,24 @@ const Login = ({ onSubmit, schema, children }) => {
                 />
                 <Checkbox
                   onValueChange={(checked) => {
-                    handleChange({ target: { value: checked, name: 'rememberMe' } });
+                    handleChange({
+                      target: { value: checked, name: "rememberMe" },
+                    });
                   }}
                   value={values.rememberMe}
                   aria-label="rememberMe"
                   name="rememberMe"
                 >
                   {formatMessage({
-                    id: 'Auth.form.rememberMe.label',
-                    defaultMessage: 'Remember me',
+                    id: "Auth.form.rememberMe.label",
+                    defaultMessage: "Remember me",
                   })}
                 </Checkbox>
                 <Button fullWidth type="submit">
-                  {formatMessage({ id: 'Auth.form.button.login', defaultMessage: 'Login' })}
+                  {formatMessage({
+                    id: "Auth.form.button.login",
+                    defaultMessage: "Login",
+                  })}
                 </Button>
               </Stack>
             </Form>
@@ -156,14 +167,21 @@ const Login = ({ onSubmit, schema, children }) => {
         </Formik>
         {children}
       </LayoutContent>
-      <Flex justifyContent="center">
+      {/* modif_zach added direction="column" */}
+      <Flex direction="column" justifyContent="center">
         <Box paddingTop={4}>
           <Link to="/auth/forgot-password">
             {formatMessage({
-              id: 'Auth.link.forgot-password',
-              defaultMessage: 'Forgot your password?',
+              id: "Auth.link.forgot-password",
+              defaultMessage: "Forgot your password?",
             })}
           </Link>
+        </Box>
+        {/* modif_zach added contactAzad */}
+        <Box paddingTop={2}>
+          <Typography variant="omega" as="p">
+            Vous avez besoin d'aide ? Contactez moi au 06 - 48 - 43 - 36 - 24 📞
+          </Typography>
         </Box>
       </Flex>
     </Main>

@@ -22,14 +22,15 @@ const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
 
   return (
     <div>
+      {/* modif_zach_customWelcomeMessageHeader */}
       <Box paddingLeft={6} paddingBottom={10}>
         <StackCustom spacing={5}>
           <Typography as="h1" variant="alpha">
             Bienvenue, Florian! 👋
           </Typography>
-          <Typography as="h1" variant="omega">
-            Comment avancez-vous dans la rédaction de votre contenu ? Pour toute
-            question au sujet du panneau administrateur, veuillez me
+          <Typography as="h1" variant="epsilon">
+            Comment avancez-vous dans la rédaction de votre contenu ? 💬 <br />
+            Pour toute question au sujet du panneau administrateur, veuillez me
             contacter.📞
           </Typography>
           {/*           <WordWrap textColor="neutral600" variant="epsilon">
