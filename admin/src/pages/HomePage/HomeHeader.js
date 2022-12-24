@@ -35,13 +35,18 @@ const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
           </Typography>
           {/* modif_zach_linkToTuto */}
           <Typography as="h3" variant="epsilon">
-            N'hésitez pas à
+            {"N'hésitez pas à"}
             <a
-              style={{ color: "#4945ff", fontWeight: 600 }}
-              href="https://www.google.com/"
+              style={{
+                color: "#4945ff",
+                fontWeight: 600,
+                textDecoration: "none",
+                "&:hover": { textDecoration: "underline" },
+              }}
+              href="#"
               target="_blank"
             >
-              consulter le tutoriel vidéo
+              {" consulter le tutoriel vidéo "}
             </a>
             démontrant comment ajouter du contenu à La Rétropolitaine.
           </Typography>

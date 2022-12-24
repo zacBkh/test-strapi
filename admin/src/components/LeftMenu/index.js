@@ -27,6 +27,8 @@ import {
 } from "@strapi/helper-plugin";
 import useConfigurations from "../../hooks/useConfigurations";
 
+import isDevEnvironment from "../../utils/isDevEnvironment";
+
 const LinkUserWrapper = styled(Box)`
   width: ${150 / 16}rem;
   position: absolute;
@@ -57,12 +59,13 @@ const LinkUser = styled(RouterNavLink)`
 
 const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }) => {
   // modif_zach_removeCTB
-  // const [contentTypeBuilder, mediaGallery] = pluginsSectionLinks;
-  // pluginsSectionLinks = [mediaGallery];
+  if (!isDevEnvironment(window.location.hostname)) {
+    const [contentTypeBuilder, mediaGallery] = pluginsSectionLinks;
+    pluginsSectionLinks = [mediaGallery];
 
-  // Removing plugins & market place by Zach
-  const [plugins, marketPlace, parametres] = generalSectionLinks;
-  generalSectionLinks = [parametres];
+    const [plugins, marketPlace, parametres] = generalSectionLinks;
+    generalSectionLinks = [];
+  }
 
   const buttonRef = useRef();
   const [userLinksVisible, setUserLinksVisible] = useState(false);
